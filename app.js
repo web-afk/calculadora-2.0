@@ -11,31 +11,30 @@ const oprationsFunctions = {
 
 const operationKeys = Object.keys(oprationsFunctions)
 
-let valor1, valor2, fn
+let valor1, valor2, fn, symbol
 
 btns.forEach( n => { 
     let btn = document.createElement("button")
-    btn.classList.add(`btn-${n}`)
     btn.textContent = n
     btn.setAttribute("id",n)
 
     btn.addEventListener("click" , e => {
 
         inputCalculadora.value += e.target.textContent
-        if(operationKeys.find(n => n === e.target.textContent)
-            && !inputCalculadora.value.includes(operationKeys.map(n => n))){
-            valor1 = inputCalculadora
-            .value
-            .substring(0,inputCalculadora.value.length - 1)
-            fn = oprationsFunctions[e.target.textContent]
-        }else if(e.target.textContent === "="){
-            valor2 = inputCalculadora
-            .value
-            .substring(valor1.length + 1,inputCalculadora.value.length - 1)
-            valor1 = parseFloat(valor1)
-            valor2 = parseFloat(valor2)
-            inputCalculadora.value = fn(valor1,valor2)
-            
+        inputValue = inputCalculadora.value
+        actualText = e.target.textContent
+
+        if(operationKeys.find(n => n === actualText) && !inputValue.includes(symbol)){
+
+            valor1 = inputValue.substring(0,inputValue.length - 1)
+            symbol = actualText
+            fn = oprationsFunctions[symbol]
+
+        }else if(actualText === "="){
+
+            valor2 = inputValue.substring(valor1.length + 1,inputValue.length - 1)
+            inputCalculadora.value = fn(valor1 -= 0,valor2 -= 0)
+
         }
     })
 
