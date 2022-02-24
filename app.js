@@ -25,28 +25,30 @@ btns.forEach( n => {
         inputValue = inputCalculadora.value
         actualText = e.target.textContent
 
-        if(operationKeys.find(n => n === actualText) && !inputValue.includes(symbol)){
+        if(actualText === "AC"){
+
+            inputCalculadora.value = inputValue.substring(0, inputValue.length - 3)
+
+        }else if(actualText === "DEL"){
+
+            inputCalculadora.value = ""
+
+        }else if(operationKeys.find(n => n === actualText) && !inputValue.includes(symbol)){
 
             valor1 = inputValue.substring(0,inputValue.length - 1)
             symbol = actualText
             fn = oprationsFunctions[symbol]
+            console.log("first layer:",valor1, valor2, fn)
 
         }else if(actualText === "="){
 
             valor2 = inputValue.substring(valor1.length + 1,inputValue.length - 1)
-            inputCalculadora.value = fn(valor1 -= 0,valor2 -= 0)
-
-        }else if(actualText === "AC"){
-
-            inputValue = inputValue.substring(0,inputValue.length - 3);
-            inputCalculadora.value = inputValue
-            inputCalculadora.value = inputValue
-
-        }else if(actualText === "DEL"){
-            inputCalculadora.value = ""
-            valor1 = ""
-            valor2 = ""
+            inputCalculadora.value = fn(valor1 *= 1,valor2 *= 1)
+            symbol = undefined
+            console.log("second layer:",valor1,valor2)
         }
+
+        console.log("global layer:",valor1,valor2)
     })
 
     calculadoraBtns.append(btn)
