@@ -1,4 +1,4 @@
-const btns = [1,2,3,"+","AC",4,5,6,"-",7,8,9,"*","DEL",0,"/","="]
+const btns = [1,2,3,"+","DEL",4,5,6,"-",7,8,9,"*","AC",0,"/","=","."]
 const calculadoraBtns = document.querySelector(".calculadora__body__btns")
 const inputCalculadora = document.querySelector(".calculadora__head__input")
 
