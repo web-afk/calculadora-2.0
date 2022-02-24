@@ -1,4 +1,4 @@
-const btns = [1,2,3,"+",4,5,6,"-",7,8,9,"*",0,"/","="]
+const btns = [1,2,3,"+","AC",4,5,6,"-"," ",7,8,9,"*","DEL",0,"/","="]
 const calculadoraBtns = document.querySelector(".calculadora__body__btns")
 const inputCalculadora = document.querySelector(".calculadora__head__input")
 
@@ -35,7 +35,19 @@ btns.forEach( n => {
             valor2 = inputValue.substring(valor1.length + 1,inputValue.length - 1)
             inputCalculadora.value = fn(valor1 -= 0,valor2 -= 0)
 
+        }else if(actualText === "AC"){
+
+            inputValue = inputValue.substring(0,inputValue.length - 3);
+            inputCalculadora.value = inputValue
+            inputCalculadora.value = inputValue
+
+        }else if(actualText === "DEL"){
+            inputCalculadora.value = ""
+            valor1 = ""
+            valor2 = ""
         }
+
+        console.log(valor1,valor2)
     })
 
     calculadoraBtns.append(btn)
