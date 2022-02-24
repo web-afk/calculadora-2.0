@@ -38,17 +38,17 @@ btns.forEach( n => {
             valor1 = inputValue.substring(0,inputValue.length - 1)
             symbol = actualText
             fn = oprationsFunctions[symbol]
-            console.log("first layer:",valor1, valor2, fn)
+            //console.log("first layer:",valor1, valor2, fn)
 
         }else if(actualText === "="){
 
             valor2 = inputValue.substring(valor1.length + 1,inputValue.length - 1)
             inputCalculadora.value = fn(valor1 *= 1,valor2 *= 1)
             symbol = undefined
-            console.log("second layer:",valor1,valor2)
+            //console.log("second layer:",valor1,valor2)
         }
 
-        console.log("global layer:",valor1,valor2)
+        //console.log("global layer:",valor1,valor2)
     })
 
     calculadoraBtns.append(btn)
