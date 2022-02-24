@@ -1,4 +1,4 @@
-const btns = [1,2,3,"+","AC",4,5,6,"-"," ",7,8,9,"*","DEL",0,"/","="]
+const btns = [1,2,3,"+","AC",4,5,6,"-",7,8,9,"*","DEL",0,"/","="]
 const calculadoraBtns = document.querySelector(".calculadora__body__btns")
 const inputCalculadora = document.querySelector(".calculadora__head__input")
 
@@ -11,12 +11,13 @@ const oprationsFunctions = {
 
 const operationKeys = Object.keys(oprationsFunctions)
 
-let valor1, valor2, fn, symbol
+let valor1, valor2, fn, symbol, number = 1
 
 btns.forEach( n => { 
     let btn = document.createElement("button")
     btn.textContent = n
     btn.setAttribute("id",n)
+    btn.style.gridArea = `a${number}`
 
     btn.addEventListener("click" , e => {
 
@@ -46,10 +47,9 @@ btns.forEach( n => {
             valor1 = ""
             valor2 = ""
         }
-
-        console.log(valor1,valor2)
     })
 
     calculadoraBtns.append(btn)
+    number++
 })
 
